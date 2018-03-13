@@ -29,6 +29,16 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# --------------------------------------------------------
+# all gem I installed.
+# Css Bootstrap -- bootstrap-sass
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+
+# jQuery
+gem 'jquery-rails'
+
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.4', '>= 4.4.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
