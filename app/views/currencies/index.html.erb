@@ -1,5 +1,5 @@
 
-<p id="notice"><%= notice %></p>
+
 
 
 <h1>Currencies</h1>
@@ -17,15 +17,17 @@
 
   <tbody>
     <% @currencies.each do |currency| %>
-      <tr>
-        <td><%= currency.symbol %></td>
-        <td><%= currency.user_id %></td>
-        <td><%= currency.cost_per %></td>
-        <td><%= currency.amount_owned %></td>
-        <td><%= link_to 'Show', currency %></td>
-        <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
-        <td><%= link_to 'Destroy', currency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if currency.user_id == current_user.id %>
+        <tr>
+          <td><%= currency.symbol %></td>
+          <td><%= currency.user_id %></td>
+          <td><%= currency.cost_per %></td>
+          <td><%= currency.amount_owned %></td>
+          <td><%= link_to 'Show', currency %></td>
+          <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
+          <td><%= link_to 'Destroy', currency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
