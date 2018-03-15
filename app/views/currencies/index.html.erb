@@ -1,31 +1,42 @@
+<h1>My Crypto List</h1>
 
-
-
-
-<h1>Currencies</h1>
-
-<table>
+<table class="table table-striped ">
+  <br />
   <thead>
     <tr>
-      <th>Symbol</th>
-      <th>User</th>
-      <th>Cost per</th>
+      <th>Name</th>
+      <th>Current Rate(per)</th>
+      <th>1Hr Rate Change</th>
+      <th>24Hr Rate Change</th>
+      <th>7 Days Rate change</th>
+      <th>Current Value</th>
+      <th>Total Cost</th>
       <th>Amount owned</th>
-      <th colspan="3"></th>
+      <th>Profit/Loss</th>
     </tr>
   </thead>
 
   <tbody>
     <% @currencies.each do |currency| %>
       <% if currency.user_id == current_user.id %>
+        <% if currency.symbol %>
+          <% currency.symbol = currency.symbol.upcase %>
+        <% end %>
         <tr>
-          <td><%= currency.symbol %></td>
-          <td><%= currency.user_id %></td>
-          <td><%= currency.cost_per %></td>
-          <td><%= currency.amount_owned %></td>
-          <td><%= link_to 'Show', currency %></td>
-          <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
-          <td><%= link_to 'Destroy', currency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% for x in @lookup_coin %>         
+          <% if currency.symbol == x['symbol'] %>
+            <td><%= link_to x['name'], currency %></td> 
+            <td>USD$ <%= x['price_usd'] %></td>
+            <td><%= x['percent_change_1h'] %>%</td>
+            <td><%= x['percent_change_24h'] %>%</td>
+            <td><%= x['percent_change_7d'] %>%</td>
+            <td>USD$ <%= x['price_usd'].to_d * currency.amount_owned %></td>
+            <td><%= currency.cost_per * currency.amount_owned %></td>
+            <td><%= currency.amount_owned %></td>
+            <td><%= (x['price_usd'].to_d - currency.cost_per) * currency.amount_owned %></td>
+            <% @profit_loss += (x['price_usd'].to_d - currency.cost_per) * currency.amount_owned %>
+          <% end %>         
+        <% end %>
         </tr>
       <% end %>
     <% end %>
@@ -33,5 +44,8 @@
 </table>
 
 <br>
-
-<%= link_to 'New Currency', new_currency_path %>
+<br>
+<strong>Portfolio Profit/Loss:</strong> USD<%= number_to_currency(@profit_loss) %>
+<br>
+<br>
+<%= link_to 'Buy New Crypto', new_currency_path, class: "btn btn-primary" %>

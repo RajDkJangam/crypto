@@ -1,16 +1,31 @@
 class CurrenciesController < ApplicationController
   before_action :set_currency, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy, :show]
 
   # GET /currencies
   # GET /currencies.json
   def index
     @currencies = Currency.all
+    require 'net/http'
+    require 'json'
+    @url = 'https://api.coinmarketcap.com/v1/ticker/'
+    @uri = URI(@url)
+    @response = Net::HTTP.get(@uri)
+    @lookup_coin = JSON.parse(@response)
+    @profit_loss = 0
   end
 
   # GET /currencies/1
   # GET /currencies/1.json
   def show
+    @currencies = Currency.all
+    require 'net/http'
+    require 'json'
+    @url = 'https://api.coinmarketcap.com/v1/ticker/'
+    @uri = URI(@url)
+    @response = Net::HTTP.get(@uri)
+    @show_crypto = JSON.parse(@response)
   end
 
   # GET /currencies/new
@@ -71,5 +86,10 @@ class CurrenciesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def currency_params
       params.require(:currency).permit(:symbol, :user_id, :cost_per, :amount_owned)
+    end
+
+    def correct_user
+      @correct = current_user.currencies.find_by(id: params[:id])
+      redirect_to currencies_path, notice: "Hey! Not Authorized to edit this entry" if @correct.nil?
     end
 end

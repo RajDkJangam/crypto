@@ -21,14 +21,25 @@ pre {
 
 a {
   color: #000;
+  text-decoration: none;
 
   &:visited {
-    color: #666;
+    
+    text-decoration: none;
   }
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: lightgrey;
+    
+    text-decoration: none;
+  }
+}
+
+a.destroy {
+  color: red;
+
+  &:hover{
+    color:lightgrey;
   }
 }
 
