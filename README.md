@@ -1,24 +1,37 @@
-# README
+# Crypto Portfolio App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails App help user to manage their crypto portfolio. User can check current price of crypto currencies and also their profit/loss.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+Be able to install the use the app you have to install ruby and rails.
 
-* Database creation
+```
+Check your Ruby version: ruby -v
+Install rails: sudo gem install rails
+Check your Rails version: rails --version
+```
 
-* Database initialization
+### Setup
 
-* How to run the test suite
+1.Fork & Clone
+2.Run bundle install to install dependencies
+3.Run bin/rake db:reset to create, load and seed db
+4.Run bin/rails server to start the server
+ 
+## Author
 
-* Services (job queues, cache servers, search engines, etc.)
+* **Chun Yang**
 
-* Deployment instructions
+## Acknowledgments
 
-* ...
+* Hat tip to anyone who's code was used
+* Inspiration
+* etc
+
+
+
