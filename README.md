@@ -2,6 +2,12 @@
 
 A Ruby on Rails App help user to manage their crypto portfolio. User can check current price of crypto currencies and also their profit/loss.
 
+## ScreenShot
+![Screenshot of portfolio](./app/assets/images/portfolio.png)
+
+![Screenshot of addCurrency](./app/assets/images/addNewCrypto.png)
+* You can setup your own crypto portfolio for you to track!
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -22,6 +28,7 @@ Check your Rails version: rails --version
 2. Run bundle install to install dependencies
 3. Run bin/rake db:reset to create, load and seed db
 4. Run bin/rails server to start the server
+5. Open Browser to localhost:3000
  
 ## Author
 
