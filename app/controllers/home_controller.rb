@@ -19,10 +19,10 @@ class HomeController < ApplicationController
   	@response = Net::HTTP.get(@uri)
   	@lookup_coin = JSON.parse(@response)
   	@symbol = params[:id]
-
   	if @symbol
   		@symbol = @symbol.upcase
   	end
+    @result = [] 
 
   end
 

@@ -1,16 +1,52 @@
-<h1>Hello World</h1>
-<p>This is my crypto portfolio app</p>
+<% @coins %>
+<h1>Current Top 100 Rank Crypto Currency</h1>
+<p>Looking for specific crypto currency? find it in lookup page</p>
 
 <br /><br />
+<table class="table table-striped ">
+  <br />
+  <thead>
+    <tr>
+      <th>#Rank</th>
+      <th>Name</th>
+      <th>Symbol</th>
+      <th>Market Cap</th>
+      <th>Unit Price</th>
+      <th>Volume(24Hr)</th>
+      <th>Circulating Supply</th>
+      <th>Change(24Hr)</th>
+    </tr>
+  </thead>
 
-<% @coins %>
+  <tbody>
+    <% for x in @coins %>
+      <tr>
+      	<% rank = x['rank'] %>
+      	<% coin_name = x['name'] %>
+      	<% price = x['price_usd']%>
+      	<% symbol = x['symbol'] %>
+      	<% change_24hr = x['percent_change_24h'] %>
+      	<% market_cap = x['market_cap_usd'] %>
+      	<% volume = x['24h_volume_usd']%>
+      	<% supply = x['available_supply'] %>
+      	<td><%= rank %></td>
+      	<td><%= coin_name %></td>
+      	<td><%= symbol %></td>
+      	<td>$<%= market_cap %></td>
+      	<td>$<%= price %></td>
+      	<td>$<%= volume %></td>
+      	<td><%= supply %> <%= symbol %></td>
 
-<% for x in @coins %>
-	<% for coin in @my_coins %>
-		<% if coin == x['symbol'] %>
-			Rank: <%= x['rank'] %><br />
-			<%= x['name'] %>: $ 
-			<%= x['price_usd']%><br /><br />
-	    <% end %>
-	<% end %>
-<% end %>
+      	<% if change_24hr.to_d > 0 %>
+      	  <td style="color:green;"><%= change_24hr %>%</td>
+      	<% elsif change_24hr.to_d < 0 %>
+          <td style="color:red;"><%= change_24hr %>%</td>
+        <% else %>
+          <td><%= change_24hr %>%</td>  
+      	<% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
