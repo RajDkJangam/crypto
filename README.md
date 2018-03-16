@@ -31,9 +31,9 @@ Check your Rails version: rails --version
 
 * This Project use API from www.coinmarketcap.com
 * There are few more features I am planning to add in the future.
-⋅⋅* User can Add their desired crypto currencies to their portfolio in lookup page.
-⋅⋅* User can sorted crypto currencies in many ways.
-⋅⋅* Provide User graph to show crypto price recent changes.
+⋅⋅1. User can Add their desired crypto currencies to their portfolio in lookup page.
+⋅⋅2. User can sorted crypto currencies in many ways.
+⋅⋅3. Provide User graph to show crypto price recent changes.
 * I use the Bootstrap v3.3.7 in this project and I will continue update the styling to make it more user friendly.
 
 
