@@ -18,10 +18,10 @@ Check your Rails version: rails --version
 
 ### Setup
 
-1.Fork & Clone
-2.Run bundle install to install dependencies
-3.Run bin/rake db:reset to create, load and seed db
-4.Run bin/rails server to start the server
+1. Fork & Clone
+2. Run bundle install to install dependencies
+3. Run bin/rake db:reset to create, load and seed db
+4. Run bin/rails server to start the server
  
 ## Author
 
